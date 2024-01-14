@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <NoWarn>NU5100;NU1803;</NoWarn>
     <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
     <Description>EPiServer CMS MVC Template package</Description>
@@ -28,6 +28,9 @@
   <ItemGroup>
     <None Include="wwwroot\**\*.*" />
     <None Remove="app_data\**\*.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExtendedCms.TinyMceEnhancements\ExtendedCms.TinyMceEnhancements.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="wwwroot\ClientResources\**\*.*">
