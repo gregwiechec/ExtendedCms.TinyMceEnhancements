@@ -1,7 +1,6 @@
 using AlloyMvcTemplates.Extensions;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Data;
-using EPiServer.DependencyInjection;
 using EPiServer.Framework.Web.Resources;
 using EPiServer.Shell.Telemetry;
 using EPiServer.Web.Routing;
@@ -18,18 +17,12 @@ using EPiServer.Scheduler;
 using EPiServer.Cms.TinyMce;
 using EPiServer.Web.Mvc.Html;
 using EPiServer.Cms.Shell;
-using EPiServer.Cms.Shell.Interface;
-using EPiServer.Cms.Shell.Interface.Internal;
 using EPiServer.Cms.UI.Admin;
 using EPiServer.Cms.UI.VisitorGroups;
 using EPiServer.Cms.Shell.UI;
-using EPiServer.Web.Mvc;
 using EPiServer.Cms.Shell.UI.Rest.Projects;
 using EPiServer.Cms.TinyMce.PropertySettings.Internal;
-using EPiServer.Cms.UI.Admin.Internal;
 using EPiServer.Web;
-using SixLabors.ImageSharp.Web.DependencyInjection;
-using SixLabors.ImageSharp.Web.Providers;
 
 
 namespace EPiServer.Templates.Alloy.Mvc
