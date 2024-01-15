@@ -19,14 +19,14 @@ public static class ServiceCollectionExtensions
         {
             var defaultSettings = config.Default();
 
-            const string path = "/ClientResources/Scripts/advanced-image-plugin.js";
+            const string path = "ClientResources/Scripts/advanced-image-plugin.js";
 
-            var pluginUrl = Paths.ToClientResource("app", path);
+            var pluginUrl = Paths.ToClientResource(typeof(ServiceCollectionExtensions).Assembly, path);
             defaultSettings
-                .AddExternalPlugin(PluginName, pluginUrl, (settings, content, propertyName) => {
+                .AddExternalPlugin(PluginName, pluginUrl, (settings, content, propertyName) =>
+                {
 
-                })
-                .AppendToolbar(PluginName);
+                });
         });
 
         return services;

@@ -10,7 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.IO;
-using AlloyMvcTemplates.AdvancedImagePlugin;
 using AlloyTemplates.Business.Initialization;
 using Baaijte.Optimizely.ImageSharp.Web;
 using EPiServer.Scheduler;
@@ -23,6 +22,8 @@ using EPiServer.Cms.Shell.UI;
 using EPiServer.Cms.Shell.UI.Rest.Projects;
 using EPiServer.Cms.TinyMce.PropertySettings.Internal;
 using EPiServer.Web;
+using Alloy.Sample;
+using ExtendedCms.TinyMceEnhancements;
 
 
 namespace EPiServer.Templates.Alloy.Mvc
@@ -66,7 +67,7 @@ namespace EPiServer.Templates.Alloy.Mvc
 
             if (_webHostingEnvironment.IsDevelopment())
             {
-                
+                services.AddUIMappedFileProviders(_webHostingEnvironment.ContentRootPath, @"..\..\");
                 services.Configure<ClientResourceOptions>(uiOptions =>
                 {
                     uiOptions.Debug = true;
@@ -96,7 +97,7 @@ namespace EPiServer.Templates.Alloy.Mvc
                 .AddVisitorGroupsUI()
                 .AddTinyMce()
                 .CustomizeTinyMce()
-                .AddAdvancedImagePlugin()
+                .AddTinyMceEnhancements()
                 .AddAdminUserRegistration(options => options.Behavior = RegisterAdminUserBehaviors.Enabled |
                                                                         RegisterAdminUserBehaviors.LocalRequestsOnly);
             

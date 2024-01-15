@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>ExtendedCms.TinyMceEnhancements</id>
+    <version>$PackageVersion$</version>
+    <title>ExtendedCms.TinyMceEnhancements</title>
+    <authors>Grzegorz Wiecheć</authors>
+    <owners>Grzegorz Wiecheć</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Edit mode plugin for editing multiple content items at once</description>
+    <releaseNotes/>
+    <copyright>Copyright 2024</copyright>
+    <tags>episerver optimizely editing</tags>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/gregwiechec/ExtendedCms.TinyMceEnhancements</projectUrl>
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="EPiServer.CMS.TinyMce" version="[4.7.1, 5.0.0)" />
+        <dependency id="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" version="[$RuntimeVersion$, $RuntimeNextMajorVersion$)" />
+      </group>
+    </dependencies>
+    <contentFiles>
+      <files include="any/any/modules/_protected/ExtendedCms.TinyMceEnhancements/ExtendedCms.TinyMceEnhancements.zip" buildAction="None" copyToOutput="true"  />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="src\ExtendedCms.TinyMceEnhancements\bin\$configuration$\ExtendedCms.TinyMceEnhancements.dll" target="lib\net8.0\" />
+
+    <file src="out\ExtendedCms.TinyMceEnhancements\ExtendedCms.TinyMceEnhancements.zip" target="contentFiles\any\any\modules\_protected\ExtendedCms.TinyMceEnhancements\" />
+
+    <file src="build\CopyZipFiles.targets" target="build\net6.0\Advanced.CMS.BulkEdit.targets" />
+	
+	<file src="src\ExtendedCms.TinyMceEnhancements\readme.txt" target="" />
+  </files>
+</package>
