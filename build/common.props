@@ -4,8 +4,8 @@
         <Company>Grzegorz Wiechec</Company>
         <Authors>Grzegorz Wiechec</Authors>
         <Copyright>© 2019-2023 Grzegorz Wiechec</Copyright>
-        <PackageProjectUrl>https://github.com/gregwiechec/grid-view-bulk-edit</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/gregwiechec/grid-view-bulk-edit/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/gregwiechec/ExtendedCms.TinyMceEnhancements</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/gregwiechec/ExtendedCms.TinyMceEnhancements/blob/master/LICENSE</PackageLicenseUrl>
         <PackageTags>episerver optimizely editing</PackageTags>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>

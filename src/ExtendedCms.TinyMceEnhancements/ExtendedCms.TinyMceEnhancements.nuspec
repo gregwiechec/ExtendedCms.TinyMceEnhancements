@@ -28,7 +28,7 @@
 
     <file src="out\ExtendedCms.TinyMceEnhancements\ExtendedCms.TinyMceEnhancements.zip" target="contentFiles\any\any\modules\_protected\ExtendedCms.TinyMceEnhancements\" />
 
-    <file src="build\CopyZipFiles.targets" target="build\net6.0\Advanced.CMS.BulkEdit.targets" />
+    <file src="build\CopyZipFiles.targets" target="build\net8.0\ExtendedCms.TinyMceEnhancements.targets" />
 	
 	<file src="src\ExtendedCms.TinyMceEnhancements\readme.txt" target="" />
   </files>

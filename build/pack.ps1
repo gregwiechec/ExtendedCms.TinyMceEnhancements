@@ -29,14 +29,14 @@ $runtimeNextMajorVersion = ($runtimeMajor.ToString() + ".0.0")
 Get-ChildItem -Path out\ -Exclude dtk | Remove-Item -Recurse -Force
 
 #copy assets approval reviews
-Copy-Item -Path src\Advanced.CMS.BulkEdit\ClientResources\ -Destination out\Advanced.CMS.BulkEdit\$version\ClientResources -recurse -Force
-Copy-Item src\Advanced.CMS.BulkEdit\module.config out\Advanced.CMS.BulkEdit
-((Get-Content -Path out\Advanced.CMS.BulkEdit\module.config -Raw).TrimEnd() -Replace '=""', "=`"$version`"" ) | Set-Content -Path out\Advanced.CMS.BulkEdit\module.config
-Set-Location $workingDirectory\out\Advanced.CMS.BulkEdit
-Start-Process -NoNewWindow -Wait -FilePath $zip -ArgumentList "a", "Advanced.CMS.BulkEdit.zip", "$version", "module.config"
+Copy-Item -Path src\ExtendedCms.TinyMceEnhancements\ClientResources\ -Destination out\ExtendedCms.TinyMceEnhancements\$version\ClientResources -recurse -Force
+Copy-Item src\ExtendedCms.TinyMceEnhancements\module.config out\ExtendedCms.TinyMceEnhancements
+((Get-Content -Path out\ExtendedCms.TinyMceEnhancements\module.config -Raw).TrimEnd() -Replace '=""', "=`"$version`"" ) | Set-Content -Path out\ExtendedCms.TinyMceEnhancements\module.config
+Set-Location $workingDirectory\out\ExtendedCms.TinyMceEnhancements
+Start-Process -NoNewWindow -Wait -FilePath $zip -ArgumentList "a", "ExtendedCms.TinyMceEnhancements.zip", "$version", "module.config"
 Set-Location $workingDirectory
 
 # Packaging public packages
-dotnet pack -c $configuration /p:PackageVersion=$version /p:CmsUIVersion=$cmsUIVersion /p:CmsUINextMajorVersion=$cmsUINextMajorVersion /p:RuntimeVersion=$runtimeVersion /p:RuntimeNextMajorVersion=$runtimeNextMajorVersion src/Advanced.CMS.BulkEdit.sln
+dotnet pack -c $configuration /p:PackageVersion=$version /p:CmsUIVersion=$cmsUIVersion /p:CmsUINextMajorVersion=$cmsUINextMajorVersion /p:RuntimeVersion=$runtimeVersion /p:RuntimeNextMajorVersion=$runtimeNextMajorVersion src/ExtendedCms.TinyMceEnhancements.sln
 
 Pop-Location
