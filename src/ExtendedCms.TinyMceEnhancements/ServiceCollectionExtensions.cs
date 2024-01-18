@@ -1,5 +1,5 @@
 ﻿using EPiServer.Shell.Modules;
-using ExtendedCms.TinyMceEnhancements.AdvancedImageResolution;
+using ExtendedCms.TinyMceEnhancements.AdvancedImageAttributes;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ExtendedCms.TinyMceEnhancements;

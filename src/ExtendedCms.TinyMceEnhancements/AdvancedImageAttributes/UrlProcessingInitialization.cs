@@ -1,12 +1,12 @@
-﻿using EPiServer.Core.Routing;
+﻿/*using EPiServer.Core.Routing;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
 using EPiServer.Web;
 
-namespace ExtendedCms.TinyMceEnhancements.AdvancedImageResolution;
+namespace ExtendedCms.TinyMceEnhancements.AdvancedImageAttributes;
 
-/*[ModuleDependency(typeof(InitializationModule))]
+[ModuleDependency(typeof(InitializationModule))]
 public class UrlProcessingInitialization : IInitializableModule
 {
     private void UrlProcessingInitialization_GeneratedUrl(object? sender, UrlGeneratorEventArgs e)

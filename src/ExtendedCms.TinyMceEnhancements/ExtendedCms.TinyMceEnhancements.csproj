@@ -6,11 +6,8 @@
 	<NuspecFile>ExtendedCms.TinyMceEnhancements.nuspec</NuspecFile>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	  <NoWarn>CS8618</NoWarn>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="AdvancedImageResolution\" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="EPiServer.CMS.TinyMce" Version="4.7.1" />

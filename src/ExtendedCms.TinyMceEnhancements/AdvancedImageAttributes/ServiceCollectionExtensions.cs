@@ -2,7 +2,7 @@
 using EPiServer.Shell;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ExtendedCms.TinyMceEnhancements.AdvancedImageResolution;
+namespace ExtendedCms.TinyMceEnhancements.AdvancedImageAttributes;
 
 public static class ServiceCollectionExtensions
 {

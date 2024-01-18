@@ -17,11 +17,13 @@ window.tinymce.PluginManager.add("advanced-image-plugin", function (editor, url)
 
         let src = imgEl.getAttribute("src");
         src = replaceImgUrlQuery(src,"width", width);
-        src = replaceImgUrlQuery(src,"height", height);
+        src = replaceImgUrlQuery(src, "height", height);
+        src = replaceImgUrlQuery(src, "extendedconfiguration", true);
 
         imgEl.setAttribute("src", src);
         imgEl.setAttribute("data-original", src);
         imgEl.setAttribute("data-mce-src", src);
+
 
         setTimeout(() => {
             editor.fire("change");
