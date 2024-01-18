@@ -6,7 +6,7 @@ using EPiServer.Web;
 
 namespace ExtendedCms.TinyMceEnhancements.AdvancedImageResolution;
 
-[ModuleDependency(typeof(InitializationModule))]
+/*[ModuleDependency(typeof(InitializationModule))]
 public class UrlProcessingInitialization : IInitializableModule
 {
     private void UrlProcessingInitialization_GeneratedUrl(object? sender, UrlGeneratorEventArgs e)
@@ -50,4 +50,4 @@ public class UrlProcessingInitialization : IInitializableModule
     public void Uninitialize(InitializationEngine context)
     {
     }
-}
+}*/
