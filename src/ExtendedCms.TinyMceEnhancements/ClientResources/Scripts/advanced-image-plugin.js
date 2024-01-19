@@ -13,13 +13,33 @@ window.tinymce.PluginManager.add("advanced-image-plugin", function (editor, url)
         }
 
         function updateImageUrl(imgEl) {
+            if (!settings || !settings.imageAttributes && !settings.imageAttributes.imageSizeSettings) {
+                return;
+            }
+            const setWidth = settings.imageAttributes.imageSizeSettings.setWidth;
+            const setHeight = settings.imageAttributes.imageSizeSettings.setHeight;
+            const staticAttributes = settings.imageAttributes.staticAttributes || [];
+
+            if (!setWidth && !setHeight && staticAttributes.length === 0) {
+                return;
+            }
+
+            const widthAttributeName = (settings.imageAttributes.imageSizeSettings || {}).widthName || "width";
+            const heightAttributeName = (settings.imageAttributes.imageSizeSettings || {}).heightName || "height";
+
             const width = imgEl.getAttribute("width");
             const height = imgEl.getAttribute("height");
 
             let src = imgEl.getAttribute("src");
-            src = replaceImgUrlQuery(src, "width", width);
-            src = replaceImgUrlQuery(src, "height", height);
-            ((settings.imageAttributes || {}).staticAttributes || []).forEach(function (attribute) {
+            if (setWidth) {
+                src = replaceImgUrlQuery(src, widthAttributeName, width);
+            }
+
+            if (setHeight) {
+                src = replaceImgUrlQuery(src, heightAttributeName, height);
+            }
+
+            staticAttributes.forEach(function (attribute) {
                 src = replaceImgUrlQuery(src, attribute.name, attribute.value);
             });
             

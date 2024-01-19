@@ -24,6 +24,7 @@ using EPiServer.Cms.TinyMce.PropertySettings.Internal;
 using EPiServer.Web;
 using Alloy.Sample;
 using ExtendedCms.TinyMceEnhancements;
+using ExtendedCms.TinyMceEnhancements.AdvancedImageAttributes;
 
 
 namespace EPiServer.Templates.Alloy.Mvc
@@ -82,6 +83,28 @@ namespace EPiServer.Templates.Alloy.Mvc
             services.Configure<UIOptions>(uiOptions =>
             {
                 uiOptions.InlineBlocksInContentAreaEnabled = true;
+            });
+
+            services.Configure<TinyMceEnhancementsOptions>(uiOptions =>
+            {
+                uiOptions.ImageAttributes = new ImageAttributeSettings
+                {
+                    StaticAttributes = new[]
+                    {
+                        new ImageQueryStringAttribute
+                        {
+                            Name = "format",
+                            Value = "webp"
+                        }
+                    },
+                    ImageSizeSettings = new ()
+                    {
+                        SetWidth = true,
+                        //WidthName = "TestWidth",
+                        SetHeight = true,
+                        //HeightName = "TestHeight"
+                    }
+                };
             });
 
             //services.AddImageSharp();
