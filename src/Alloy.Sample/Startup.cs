@@ -99,11 +99,15 @@ namespace EPiServer.Templates.Alloy.Mvc
                     },
                     ImageSizeSettings = new ()
                     {
-                        SetWidth = true,
-                        //WidthName = "TestWidth",
-                        SetHeight = true,
-                        //HeightName = "TestHeight"
+                        WidthName = "width",
+                        HeightName = "height"
                     }
+                };
+                uiOptions.ImageRestrictions = new ()
+                {
+                    MaxWidth = 300,
+                    MaxHeight = 200,
+                    KeepRatio = true
                 };
             });
 

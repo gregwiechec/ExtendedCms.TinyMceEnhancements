@@ -16,16 +16,17 @@ window.tinymce.PluginManager.add("advanced-image-plugin", function (editor, url)
             if (!settings || !settings.imageAttributes && !settings.imageAttributes.imageSizeSettings) {
                 return;
             }
-            const setWidth = settings.imageAttributes.imageSizeSettings.setWidth;
-            const setHeight = settings.imageAttributes.imageSizeSettings.setHeight;
+
+            const widthAttributeName = (settings.imageAttributes.imageSizeSettings || {}).widthName;
+            const heightAttributeName = (settings.imageAttributes.imageSizeSettings || {}).heightName;
+
+            const setWidth = !!widthAttributeName;
+            const setHeight = !!heightAttributeName;
             const staticAttributes = settings.imageAttributes.staticAttributes || [];
 
             if (!setWidth && !setHeight && staticAttributes.length === 0) {
                 return;
             }
-
-            const widthAttributeName = (settings.imageAttributes.imageSizeSettings || {}).widthName || "width";
-            const heightAttributeName = (settings.imageAttributes.imageSizeSettings || {}).heightName || "height";
 
             const width = imgEl.getAttribute("width");
             const height = imgEl.getAttribute("height");
@@ -53,9 +54,48 @@ window.tinymce.PluginManager.add("advanced-image-plugin", function (editor, url)
             }, 100);
         }
 
+        function updateImageSize(img) {
+            var maxWidth = (settings.imageRestrictions || {}).maxWidth || 0;
+            var maxHeight = (settings.imageRestrictions || {}).maxHeight || 0;
+            var keepRatio = (settings.imageRestrictions || {}).keepRatio || false;
+
+            if (maxWidth <= 0 && maxHeight <= 0 && keepRatio === false) {
+                return;
+            }
+
+            if (maxWidth > 0 && img.clientWidth > maxWidth) {
+                img.width = maxWidth;
+            }
+
+            if (maxHeight > 0 && img.clientHeight > maxHeight) {
+                img.height = maxHeight;
+            }
+
+            function updateRatio() {
+                if (img.clientWidth === img.naturalWidth && img.clientHeight === img.naturalHeight) {
+                    return;
+                }
+
+                var newWidth = (img.clientHeight * img.naturalWidth) / img.naturalHeight;
+                var newHeight = (img.clientWidth * img.naturalHeight) / img.naturalWidth;
+
+                var canUpdateWidth = maxWidth <= 0 || newWidth < maxWidth;
+                if (canUpdateWidth && newWidth * img.clientHeight > newHeight * img.clientWidth) {
+                    img.width = newWidth;
+                } else {
+                    img.height = newHeight;
+                }
+            }
+
+            if (keepRatio) {
+                updateRatio();
+            }
+        }
+
         editor.on('ObjectResized', function (e) {
             if (e.target.tagName === "IMG") {
                 const img = e.target;
+                updateImageSize(img);
                 updateImageUrl(img);
             }
         });
@@ -68,6 +108,7 @@ window.tinymce.PluginManager.add("advanced-image-plugin", function (editor, url)
                 const nodeEl = editor.selection.getNode();
                 const img = nodeEl.querySelector("img");
 
+                updateImageSize(img);
                 updateImageUrl(img);
             }, 100)
         });

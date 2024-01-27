@@ -7,4 +7,6 @@ namespace ExtendedCms.TinyMceEnhancements;
 public class TinyMceEnhancementsOptions
 {
     public ImageAttributeSettings ImageAttributes  { get; set; }
+
+    public ImageRestrictionsSettings ImageRestrictions { get; set; }
 }

@@ -15,8 +15,6 @@ public class ImageQueryStringAttribute
 
 public class ImageSizeSettings
 {
-    public bool SetWidth { get; set; }
     public string WidthName { get; set; }
-    public bool SetHeight { get; set; }
     public string HeightName { get; set; }
 }
