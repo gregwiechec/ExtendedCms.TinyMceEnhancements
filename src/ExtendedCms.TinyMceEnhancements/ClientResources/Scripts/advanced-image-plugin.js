@@ -45,7 +45,7 @@ window.tinymce.PluginManager.add("advanced-image-plugin", function (editor, url)
             });
             
             imgEl.setAttribute("src", src);
-            imgEl.setAttribute("data-original", src);
+            //imgEl.setAttribute("data-original", src);
             imgEl.setAttribute("data-mce-src", src);
 
 
@@ -112,8 +112,10 @@ window.tinymce.PluginManager.add("advanced-image-plugin", function (editor, url)
                 const nodeEl = editor.selection.getNode();
                 const img = nodeEl.querySelector("img");
 
-                updateImageSize(img);
-                updateImageUrl(img);
+                if (img) {
+                    updateImageSize(img);
+                    updateImageUrl(img);
+                }
             }, 100);
         });
     });
