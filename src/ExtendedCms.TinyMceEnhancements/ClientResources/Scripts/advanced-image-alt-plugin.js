@@ -9,6 +9,10 @@ window.tinymce.PluginManager.add("advanced-image-alt-plugin", function (editor, 
                 const nodeEl = editor.selection.getNode();
                 const img = nodeEl.querySelector("img");
 
+                if (!img) {
+                    return;
+                }
+
                 function setAltText(altText) {
                     img.setAttribute("alt", altText);
 
@@ -21,7 +25,7 @@ window.tinymce.PluginManager.add("advanced-image-alt-plugin", function (editor, 
                 showAltTextDialog(img).then((altText) => {
                     setAltText(altText);
                 }).catch(() => {
-                    setAltText(altText);
+                    setAltText("");
                 });
             }, 100);
         });
