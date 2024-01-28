@@ -1,4 +1,5 @@
 ﻿using EPiServer.Shell.Modules;
+using ExtendedCms.TinyMceEnhancements.AdvancedImageAlt;
 using ExtendedCms.TinyMceEnhancements.AdvancedImageAttributes;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -6,7 +7,8 @@ namespace ExtendedCms.TinyMceEnhancements;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddTinyMceEnhancements(this IServiceCollection services)
+    public static IServiceCollection AddTinyMceEnhancements(this IServiceCollection services, bool configureImageAttributes = true,
+        bool configureImageAlt = true)
     {
         services.Configure<ProtectedModuleOptions>(
             pm =>
@@ -18,7 +20,15 @@ public static class ServiceCollectionExtensions
                 }
             });
 
-        services.AddAdvancedImagePlugin();
+        if (configureImageAttributes)
+        {
+            services.AddAdvancedImagePlugin();
+        }
+
+        if (configureImageAlt)
+        {
+            services.AddAdvancedImageAltPlugin();
+        }
 
         return services;
     }

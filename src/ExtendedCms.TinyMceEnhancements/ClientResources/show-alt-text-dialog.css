@@ -1,0 +1,8 @@
+.Sleek .show-alt-text-dialog .dijitDialogPaneContentArea {
+    padding: 32px;
+    width: 500px;
+}
+
+.Sleek .show-alt-text-dialog .dijitDialogPaneContentArea .dijitTextBox {
+    width: 100%;
+}

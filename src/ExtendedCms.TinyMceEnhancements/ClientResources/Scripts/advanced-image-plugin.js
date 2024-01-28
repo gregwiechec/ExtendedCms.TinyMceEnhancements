@@ -90,6 +90,10 @@ window.tinymce.PluginManager.add("advanced-image-plugin", function (editor, url)
             if (keepRatio) {
                 updateRatio();
             }
+
+            setTimeout(() => {
+                editor.fire("change");
+            }, 100);
         }
 
         editor.on('ObjectResized', function (e) {
@@ -110,7 +114,7 @@ window.tinymce.PluginManager.add("advanced-image-plugin", function (editor, url)
 
                 updateImageSize(img);
                 updateImageUrl(img);
-            }, 100)
+            }, 100);
         });
     });
     
