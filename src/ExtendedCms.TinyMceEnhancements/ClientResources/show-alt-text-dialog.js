@@ -59,7 +59,7 @@ define([
             dialogClass: "show-alt-text-dialog",
             content: dialogContent,
             defaultActionsVisible: true,
-            confirmActionText: "Update ALT"
+            confirmActionText: "Update ALT text"
         });
 
         dialog.own(dialogContent);
@@ -78,14 +78,19 @@ define([
                 contentService.getContentFromUrl(url.path).then((content) => {
                     store = store || dependency.resolve("epi.storeregistry").get("epi.cms.contentdata");
                     store.get(content.contentLink).then((contentItem) => {
-                        settings.imageAltTextSettings.imageAltAttributes.some(x => {
+                        var hasDefaultAltText = settings.imageAltTextSettings.imageAltAttributes.some(x => {
                             if (contentItem.properties[x]) {
                                 resolve(contentItem.properties[x]);
                                 return true;
                             }
                             return false;
                         });
+                        if (!hasDefaultAltText) {
+                            resolve("");
+                        }
                     });
+                }).otherwise(function () {
+                    resolve("");
                 });
             });
         }
