@@ -128,7 +128,7 @@ public void ConfigureServices(IServiceCollection services)
 
    // ...
 }
-```
+````
 
 Using the code above, a `format=webp` will be added to each braze:
 
