@@ -106,7 +106,7 @@ Some plugins require additional query string parameters to be added. E.g. Baaijt
 To add static attributes to an image querystring using TinyMceEnhancements, configure `StaticAttributes`:
 
 
-``csharp
+````csharp
 public void ConfigureServices(IServiceCollection services)
 {
     //...
