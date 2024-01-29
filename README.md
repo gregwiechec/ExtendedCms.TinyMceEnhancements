@@ -73,9 +73,9 @@ To solve this problem, you can use one of the popular plug-ins, such as https://
 
 Thanks to it, after entering the width and height in querystring, the image in given dimensions is returned from the server.
 
-Unfortunately TinyMCE only adds height and width as attributes. Using TinyMceEnhancements it is possible to change the way the editor works.
+Unfortunately TinyMCE only adds height and width as attributes. Using **TinyMceEnhancements** it is possible to change the way the editor works.
 
-To do this, set the names of the querystring parameters used for height and width in the options.
+To do this, set the names of the querystring parameters used for height and width in the `ImageSizeSettings`:
 
 ````csharp
 services.Configure<TinyMceEnhancementsOptions>(options =>
@@ -93,13 +93,48 @@ services.Configure<TinyMceEnhancementsOptions>(options =>
 
 From now on, when adding an image to the editor, the querystring is also changed:
 
+````
 <img src="/EPiServer/CMS/Content/globalassets/en/startpage/polarbearonice.png,,128?epieditmode=false&amp;width=300&amp;height=17">.
+````
 
 so that Baaijte.Optimizely.ImageSharp.Web (or another plugin) will return the image at the resized size.
 
 ## Adding custom attributes
 
-TODO
+Some plugins require additional query string parameters to be added. E.g. Baaijte.Optimizely.ImageSharp.Web will return images in webp format if the querystring contains `format=webp`.
+
+To add static attributes to an image querystring using TinyMceEnhancements, configure `StaticAttributes`:
+
+
+``csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    //...
+
+    services.Configure<TinyMceEnhancementsOptions>(uiOptions =>.
+    {
+        uiOptions.ImageAttributes = new ()
+        {
+            StaticAttributes = new[]
+            {
+                new ImageQueryStringAttribute
+                {
+                    Name = "format",
+                    Value = "webp"
+                }
+            }
+        };
+    });
+
+   // ...
+}
+```
+
+Using the code above, a `format=webp` will be added to each braze:
+
+````
+<img src="/EPiServer/CMS/Content/globalassets/en/startpage/polarbearonice.png,,128?epieditmode=false&amp;format=webp">
+````
 
 ## Set ALT text
 
