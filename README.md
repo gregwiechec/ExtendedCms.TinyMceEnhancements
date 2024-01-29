@@ -9,8 +9,9 @@ ExtendedCms.TinyMceEnhancements contains set of enhancements for Optimizely Tiny
 * [Adding custom attributes](#adding-custom-attributes)
 * [Set ALT text](#set-alt-text)
 
-## installation
+## Getting Started
 
+To get started you need to install ExtendedCms.TinyMceEnhancements package from EPiServer's [NuGet feed](https://nuget.episerver.com/).
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -57,9 +58,43 @@ public void ConfigureServices(IServiceCollection services)
 
 ## Managing image dimensions
 
+When adding an image to the HTML editor, TinyMCE automatically sets the height and width in the attributes.
+
 ![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_set_size.jpg "TinyMceEnhancements")
 
-TODO
+For example:
+<img src="/EPiServer/CMS/Content/globalassets/en/startpage/polarbearonice.png,,128?epieditmode=false" width="300" height="175">.
+
+This means that the image is resized on the client, but the browser still returns the full-size image. In many cases, we would like to return the image at the size that is currently displayed on the screen.
+
+To solve this problem, you can use one of the popular plug-ins, such as https://github.com/vnbaaij/Baaijte.Optimizely.ImageSharp.Web.
+
+Thanks to it, after entering the width and height in querystring, the image in given dimensions is returned from the server.
+
+Unfortunately TinyMCE only adds height and width as attributes. Using TinyMceEnhancements it is possible to change the way the editor works.
+
+To do this, set the names of the querystring parameters used for height and width in the options.
+
+``csharp
+services.Configure<TinyMceEnhancementsOptions>(options =>
+{
+    options.ImageAttributes = new ()
+    {
+        ImageSizeSettings = new ()
+        {
+            WidthName = "width",
+            HeightName = "height"
+        }
+    };
+}
+````
+
+
+From now on, when adding an image to the editor, the querystring is also changed:
+
+<img src="/EPiServer/CMS/Content/globalassets/en/startpage/polarbearonice.png,,128?epieditmode=false&amp;width=300&amp;height=17">.
+
+so that Baaijte.Optimizely.ImageSharp.Web (or another plugin) will return the image at the resized size.
 
 ## Adding custom attributes
 
