@@ -54,7 +54,7 @@ public void ConfigureServices(IServiceCollection services)
 
    // ...
 }
-```
+````
 
 ## Managing image dimensions
 
@@ -130,7 +130,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ````
 
-Using the code above, a `format=webp` will be added to each braze:
+Using the code above, a `format=webp` will be added to each image:
 
 ````
 <img src="/EPiServer/CMS/Content/globalassets/en/startpage/polarbearonice.png,,128?epieditmode=false&amp;format=webp">
@@ -140,4 +140,15 @@ Using the code above, a `format=webp` will be added to each braze:
 
 ![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_set_alt_text.jpg "TinyMceEnhancements")
 
-TODO
+````csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.Configure<TinyMceEnhancementsOptions>(uiOptions =>
+    {
+        uiOptions.ImageAltTextSettings = new ()
+        {
+            ImageAltAttributes = new[] { "copyright" }
+        };
+    });
+}
+````
