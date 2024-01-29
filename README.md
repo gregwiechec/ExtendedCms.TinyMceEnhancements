@@ -63,7 +63,9 @@ When adding an image to the HTML editor, TinyMCE automatically sets the height a
 ![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_set_size.jpg "TinyMceEnhancements")
 
 For example:
+````
 <img src="/EPiServer/CMS/Content/globalassets/en/startpage/polarbearonice.png,,128?epieditmode=false" width="300" height="175">.
+````
 
 This means that the image is resized on the client, but the browser still returns the full-size image. In many cases, we would like to return the image at the size that is currently displayed on the screen.
 
@@ -75,7 +77,7 @@ Unfortunately TinyMCE only adds height and width as attributes. Using TinyMceEnh
 
 To do this, set the names of the querystring parameters used for height and width in the options.
 
-``csharp
+````csharp
 services.Configure<TinyMceEnhancementsOptions>(options =>
 {
     options.ImageAttributes = new ()
@@ -88,7 +90,6 @@ services.Configure<TinyMceEnhancementsOptions>(options =>
     };
 }
 ````
-
 
 From now on, when adding an image to the editor, the querystring is also changed:
 
