@@ -1,12 +1,15 @@
 # ExtendedCms.TinyMceEnhancements
 
-ExtendedCms.TinyMceEnhancements contains set of enhancements for Optimizely TinyMCE integration.
+ExtendedCms.TinyMceEnhancements contains set of improvements for Optimizely TinyMCE integration.
 
 ![TinyMceEnhancements](documentation/assets/TinyMceEnhancements.jpg "TinyMceEnhancements")
 
+Table of contents:
 * [Managing image dimensions attributes](#managing-image-dimensions)
 * [Adding custom attributes](#adding-custom-attributes)
 * [Set ALT text](#set-alt-text)
+---
+* [Configuring specific features](#configuring-specific-features)
 
 ## Getting Started
 
