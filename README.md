@@ -161,3 +161,41 @@ public void ConfigureServices(IServiceCollection services)
 When you add an image to the editor, the ALT text hint dialog will be displayed.
 
 ![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_set_alt_text.jpg "TinyMceEnhancements")
+
+## Configuring specific features
+
+By default managing both image size and ALT text are enabled. It's configurable using `AddTinyMceEnhancements` method:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    //...
+
+    var configureImageAttributes = false;
+    var configureImageAlt = true;
+    services.......
+        .AddTinyMce()
+        .AddTinyMceEnhancements(configureImageAttributes, configureImageAlt) // Turn on TinyMCEEnhancements addon
+
+   // ...
+}
+````
+
+You can also turn it on only for specific TinyMce instances, for example:
+
+````csharp
+public static class ServiceCollectionExtensions
+{
+    public static IServiceCollection CustomizeTinyMce(this IServiceCollection services)
+    {
+        services.Configure<TinyMceConfiguration>(config =>
+        {
+		    config.For<ArticlePage>(t => t.SharedBody)
+			    .ConfigureImagePlugin()
+				.ConfigureImageAltPlugin();
+		}
+    }
+}
+````
+
+
