@@ -4,16 +4,17 @@ ExtendedCms.TinyMceEnhancements contains set of improvements for Optimizely Tiny
 
 ![TinyMceEnhancements](documentation/assets/TinyMceEnhancements.jpg "TinyMceEnhancements")
 
+---
+
 Table of contents:
 * [Managing image dimensions attributes](#managing-image-dimensions)
 * [Adding custom attributes](#adding-custom-attributes)
 * [Set ALT text](#set-alt-text)
----
 * [Configuring specific features](#configuring-specific-features)
 
 ## Getting Started
 
-To get started you need to install ExtendedCms.TinyMceEnhancements package from EPiServer's [NuGet feed](https://nuget.episerver.com/).
+To get started, you need to install ExtendedCms.TinyMceEnhancements package from EPiServer's [NuGet feed](https://nuget.episerver.com/package/?id=ExtendedCms.TinyMceEnhancements).
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -60,9 +61,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## Managing image dimensions
 
-When adding an image to the HTML editor, TinyMCE automatically sets the height and width in the attributes.
-
-![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_set_size.jpg "TinyMceEnhancements")
+When adding an image to the HTML editor, TinyMCE automatically sets the height and width in attributes.
 
 For example:
 ````
@@ -71,13 +70,11 @@ For example:
 
 This means that the image is resized on the client, but the browser still returns the full-size image. In many cases, we would like to return the image at the size that is currently displayed on the screen.
 
-To solve this problem, you can use one of the popular plug-ins, such as [Baaijte.Optimizely.ImageSharp.Web](https://github.com/vnbaaij/Baaijte.Optimizely.ImageSharp.Web).
+![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_set_size.jpg "TinyMceEnhancements")
 
-Thanks to it, after entering the width and height in querystring, the image in given dimensions is returned from the server.
+To solve this problem, you can use one of the popular plug-ins, such as [Baaijte.Optimizely.ImageSharp.Web](https://github.com/vnbaaij/Baaijte.Optimizely.ImageSharp.Web). With this plugin, after entering the width and height in querystring, the image in given dimensions is returned from the server.
 
-Unfortunately TinyMCE only adds height and width as attributes. Using **TinyMceEnhancements** it is possible to change the way the editor works.
-
-To do this, set the names of the querystring parameters used for height and width in the `ImageSizeSettings`:
+Unfortunately TinyMCE only adds height and width as attributes. Using **TinyMceEnhancements** it is possible to change the way the editor works. To set the names of the querystring parameters used for height and width use `ImageSizeSettings` options:
 
 ````csharp
 services.Configure<TinyMceEnhancementsOptions>(options =>
@@ -93,13 +90,13 @@ services.Configure<TinyMceEnhancementsOptions>(options =>
 }
 ````
 
-From now on, when adding an image to the editor, the querystring is also changed:
+From now on, when adding an image to the editor or changing image size, the querystring will also be changed:
 
 ````
 <img src="/EPiServer/CMS/Content/globalassets/en/startpage/polarbearonice.png,,128?epieditmode=false&amp;width=300&amp;height=17">.
 ````
 
-so that Baaijte.Optimizely.ImageSharp.Web (or another plugin) will return the image at the resized size.
+Then Baaijte.Optimizely.ImageSharp.Web (or another plugin) will return the resized image.
 
 ### Limiting image size
 
