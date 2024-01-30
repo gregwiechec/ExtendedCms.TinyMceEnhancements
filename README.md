@@ -4,7 +4,6 @@ ExtendedCms.TinyMceEnhancements contains set of enhancements for Optimizely Tiny
 
 ![TinyMceEnhancements](documentation/assets/TinyMceEnhancements.jpg "TinyMceEnhancements")
 
-
 * [Managing image dimensions attributes](#managing-image-dimensions)
 * [Adding custom attributes](#adding-custom-attributes)
 * [Set ALT text](#set-alt-text)
@@ -69,7 +68,7 @@ For example:
 
 This means that the image is resized on the client, but the browser still returns the full-size image. In many cases, we would like to return the image at the size that is currently displayed on the screen.
 
-To solve this problem, you can use one of the popular plug-ins, such as https://github.com/vnbaaij/Baaijte.Optimizely.ImageSharp.Web.
+To solve this problem, you can use one of the popular plug-ins, such as [Baaijte.Optimizely.ImageSharp.Web](https://github.com/vnbaaij/Baaijte.Optimizely.ImageSharp.Web).
 
 Thanks to it, after entering the width and height in querystring, the image in given dimensions is returned from the server.
 
