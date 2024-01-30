@@ -98,6 +98,26 @@ From now on, when adding an image to the editor, the querystring is also changed
 
 so that Baaijte.Optimizely.ImageSharp.Web (or another plugin) will return the image at the resized size.
 
+### Limiting image size
+
+The plugin additionally allows you to limit the maximum size of images. This will prevent images from being enlarged too much.
+To configure the maximum size of images, you need to configure the `ImageRestrictions` option:
+
+````csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.Configure<TinyMceEnhancementsOptions>(uiOptions =>
+    {
+        uiOptions.ImageRestrictions = new ()
+        {
+            MaxWidth = 300,
+            MaxHeight = 200,
+            KeepRatio = true
+        };
+    });
+}
+````
+
 ## Adding custom attributes
 
 Some plugins require additional query string parameters to be added. E.g. Baaijte.Optimizely.ImageSharp.Web will return images in webp format if the querystring contains `format=webp`.
@@ -190,10 +210,10 @@ public static class ServiceCollectionExtensions
     {
         services.Configure<TinyMceConfiguration>(config =>
         {
-		    config.For<ArticlePage>(t => t.SharedBody)
-			    .ConfigureImagePlugin()
-				.ConfigureImageAltPlugin();
-		}
+            config.For<ArticlePage>(t => t.SharedBody)
+              .ConfigureImagePlugin()
+              .ConfigureImageAltPlugin();
+	}
     }
 }
 ````
