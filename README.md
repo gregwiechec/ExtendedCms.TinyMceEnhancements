@@ -50,7 +50,7 @@ public void ConfigureServices(IServiceCollection services)
     
     services.......
         .AddTinyMce()
-        .AddTinyMceEnhancements() // 
+        .AddTinyMceEnhancements() // Turn on TinyMCEEnhancements addon
 
    // ...
 }
@@ -138,7 +138,13 @@ Using the code above, a `format=webp` will be added to each image:
 
 ## Set ALT text
 
-![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_set_alt_text.jpg "TinyMceEnhancements")
+Alt text attribute is very important, because it makes images more accessible for both people and search engines.
+
+Of course TinyMCE allows to set ALT attribute, but it's not mandatory.
+
+The TinyMceEnhancements plugin can be configured to display a dialog box to wrpowadz ALT text when adding an image.
+
+In addition, you can configure the default ALT text completed when the dialog is displayed. To add a default ALT text, configure the `ImageAltTextSettings` option:
 
 ````csharp
 public void ConfigureServices(IServiceCollection services)
@@ -152,3 +158,7 @@ public void ConfigureServices(IServiceCollection services)
     });
 }
 ````
+
+When you add an image to the editor, the ALT text hint dialog will be displayed.
+
+![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_set_alt_text.jpg "TinyMceEnhancements")
