@@ -93,7 +93,7 @@ services.Configure<TinyMceEnhancementsOptions>(options =>
 From now on, when adding an image to the editor or changing image size, the querystring will also be changed:
 
 ````
-<img src="/EPiServer/CMS/Content/globalassets/en/startpage/polarbearonice.png,,128?epieditmode=false&amp;width=300&amp;height=17">.
+<img src="/EPiServer/CMS/Content/globalassets/en/startpage/polarbearonice.png,,128?epieditmode=false&amp;width=300&amp;height=17">
 ````
 
 Then Baaijte.Optimizely.ImageSharp.Web (or another plugin) will return the resized image.
