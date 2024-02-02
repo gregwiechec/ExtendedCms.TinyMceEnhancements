@@ -100,7 +100,7 @@ Then Baaijte.Optimizely.ImageSharp.Web (or another plugin) will return the resiz
 
 ### Limiting image size
 
-The plugin additionally allows you to limit the maximum size of images. This will prevent images from being enlarged too much.
+The plugin additionally allows you to limit the maximum size of images. This will prevent your images from becoming too large.
 To configure the maximum size of images, you need to configure the `ImageRestrictions` option:
 
 ````csharp
@@ -149,7 +149,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ````
 
-Using the code above, a `format=webp` will be added to each image:
+Using the code above, a `format=webp` querystring will be added to each image:
 
 ````
 <img src="/EPiServer/CMS/Content/globalassets/en/startpage/polarbearonice.png,,128?epieditmode=false&amp;format=webp">
@@ -161,7 +161,7 @@ Alt text attribute is very important, because it makes images more accessible fo
 
 Of course TinyMCE allows to set ALT attribute, but it's not mandatory.
 
-The TinyMceEnhancements plugin can be configured to display a dialog box to wrpowadz ALT text when adding an image.
+The TinyMceEnhancements plugin can be configured to display a dialog box to enter ALT text when adding an image.
 
 In addition, you can configure the default ALT text completed when the dialog is displayed. To add a default ALT text, configure the `ImageAltTextSettings` option:
 
@@ -178,7 +178,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ````
 
-When you add an image to the editor, the ALT text hint dialog will be displayed.
+When you add an image to the editor, the ALT text dialog with hint will be displayed.
 
 ![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_set_alt_text.jpg "TinyMceEnhancements")
 
