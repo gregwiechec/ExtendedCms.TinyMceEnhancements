@@ -12,4 +12,6 @@ public class TinyMceEnhancementsOptions
     public ImageRestrictionsSettings ImageRestrictions { get; set; }
 
     public ImageAltTextSettings ImageAltTextSettings { get; set; }
+
+    public bool FullWidthEnabled { get; set; } = true;
 }
