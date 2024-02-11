@@ -215,6 +215,16 @@ public virtual XhtmlString HtmlEditorFullWidth { get; set; }
 ```
 ![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_full_width.jpg "TinyMceEnhancements")
 
+
+Feature has to be turned on in options:
+
+```csharp
+services.Configure<TinyMceEnhancementsOptions>(options =>
+{
+    options.FullWidthEnabled = true;
+});
+```
+
 ## Configuring specific features
 
 By default managing both image size and ALT text are enabled. It's configurable using `AddTinyMceEnhancements` method:
