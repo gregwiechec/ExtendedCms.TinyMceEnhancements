@@ -24,8 +24,10 @@ public class TinyMceEnhancementsModule : ShellModule
 
     public override ModuleViewModel CreateViewModel(ModuleTable moduleTable, IClientResourceService clientResourceService)
     {
-        var viewModel = new TinyMceEnhancementsViewModel(this, clientResourceService);
-        viewModel.TinyMceEnhancementsOptions = _tinyMceEnhancementsOptions;
+        var viewModel = new TinyMceEnhancementsViewModel(this, clientResourceService)
+        {
+            TinyMceEnhancementsOptions = _tinyMceEnhancementsOptions
+        };
         return viewModel;
     }
 }

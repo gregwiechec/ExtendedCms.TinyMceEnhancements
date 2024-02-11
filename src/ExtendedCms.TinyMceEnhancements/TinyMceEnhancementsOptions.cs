@@ -13,5 +13,8 @@ public class TinyMceEnhancementsOptions
 
     public ImageAltTextSettings ImageAltTextSettings { get; set; }
 
-    public bool FullWidthEnabled { get; set; } = true;
+    /// <summary>
+    /// When <see langword="true" /> then full width TinyMCe editor is enabled. Default <see langword="false" /> and FullWidth is not active
+    /// </summary>
+    public bool FullWidthEnabled { get; set; } = false;
 }

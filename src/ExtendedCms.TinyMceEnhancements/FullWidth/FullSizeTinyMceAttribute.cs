@@ -10,9 +10,7 @@ public class FullSizeTinyMceAttribute: Attribute, IDisplayMetadataProvider
 
     public void CreateDisplayMetadata(DisplayMetadataProviderContext context)
     {
-        var extendedMetadata = context.DisplayMetadata.AdditionalValues[ExtendedMetadata.ExtendedMetadataDisplayKey] as ExtendedMetadata;
-
-        if (extendedMetadata == null)
+        if (context.DisplayMetadata.AdditionalValues[ExtendedMetadata.ExtendedMetadataDisplayKey] is not ExtendedMetadata extendedMetadata)
         {
             return;
         }
@@ -25,12 +23,12 @@ public class FullSizeTinyMceAttribute: Attribute, IDisplayMetadataProvider
 public enum WidthType
 {
     /// <summary>
-    ///
+    /// Set TinyMCE full width
     /// </summary>
     Full,
 
     /// <summary>
-    ///
+    /// Set TinyMCE editor centered width
     /// </summary>
     Centered
 }

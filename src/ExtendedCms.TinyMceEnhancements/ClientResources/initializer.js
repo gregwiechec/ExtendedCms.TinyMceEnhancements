@@ -19,7 +19,9 @@ define([
                 settings[property] = this._settings.tinyMceEnhancementsOptions[property];
             }
 
-            fullWidthInitializer();
+            if (this._settings.tinyMceEnhancementsOptions.fullWidthEnabled) {
+                fullWidthInitializer();
+            }
         }
     });
 });

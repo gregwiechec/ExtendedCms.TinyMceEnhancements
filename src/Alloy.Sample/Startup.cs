@@ -25,6 +25,7 @@ using EPiServer.Web;
 using Alloy.Sample;
 using ExtendedCms.TinyMceEnhancements;
 using ExtendedCms.TinyMceEnhancements.AdvancedImageAttributes;
+using System.Drawing.Imaging;
 
 
 namespace EPiServer.Templates.Alloy.Mvc
@@ -80,14 +81,14 @@ namespace EPiServer.Templates.Alloy.Mvc
                 });
             }
 
-            services.Configure<UIOptions>(uiOptions =>
+            services.Configure<UIOptions>(options =>
             {
-                uiOptions.InlineBlocksInContentAreaEnabled = true;
+                options.InlineBlocksInContentAreaEnabled = true;
             });
 
-            services.Configure<TinyMceEnhancementsOptions>(uiOptions =>
+            services.Configure<TinyMceEnhancementsOptions>(options =>
             {
-                uiOptions.ImageAttributes = new ImageAttributeSettings
+                options.ImageAttributes = new ()
                 {
                     StaticAttributes = new[]
                     {
@@ -103,12 +104,17 @@ namespace EPiServer.Templates.Alloy.Mvc
                         HeightName = "height"
                     }
                 };
-                uiOptions.ImageRestrictions = new ()
+                options.ImageRestrictions = new ()
                 {
                     MaxWidth = 300,
                     MaxHeight = 200,
                     KeepRatio = true
                 };
+                options.ImageAltTextSettings = new ()
+                {
+                    ImageAltAttributes = new[] { "copyright" }
+                };
+                options.FullWidthEnabled = true;
             });
 
             //services.AddImageSharp();

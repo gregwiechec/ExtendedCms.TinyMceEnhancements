@@ -15,6 +15,8 @@
 
         _setLabelAttr: function (value) {
             this.inherited(arguments);
+
+            // hide field label
             this.labelNode.classList.add("dijitHidden");
         }
     });

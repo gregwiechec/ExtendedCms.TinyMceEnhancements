@@ -13,6 +13,39 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         ...
+
+        services.Configure<TinyMceEnhancementsOptions>(options =>
+        {
+            options.ImageAttributes = new ()
+            {
+                StaticAttributes = new[]
+                {
+                    new ImageQueryStringAttribute
+                    {
+                        Name = "format",
+                        Value = "webp"
+                    }
+                },
+                ImageSizeSettings = new ()
+                {
+                    WidthName = "width",
+                    HeightName = "height"
+                }
+            };
+            options.ImageRestrictions = new ()
+            {
+                MaxWidth = 300,
+                MaxHeight = 200,
+                KeepRatio = true
+            };
+            options.ImageAltTextSettings = new ()
+            {
+                ImageAltAttributes = new[] { "copyright" }
+            };
+            options.FullWidthEnabled = true;
+        });
+
+        ...
         services.AddTinyMceEnhancements();
         ...
     }
