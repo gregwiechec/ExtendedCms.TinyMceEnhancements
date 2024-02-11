@@ -10,6 +10,7 @@ Table of contents:
 * [Managing image dimensions attributes](#managing-image-dimensions)
 * [Adding custom attributes](#adding-custom-attributes)
 * [Set ALT text](#set-alt-text)
+* [Full Width TinyMCE editor](#full-width-tinymce-editor)
 * [Configuring specific features](#configuring-specific-features)
 
 ## Getting Started
@@ -181,6 +182,38 @@ public void ConfigureServices(IServiceCollection services)
 When you add an image to the editor, the ALT text dialog with hint will be displayed.
 
 ![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_set_alt_text.jpg "TinyMceEnhancements")
+
+## Full Width TinyMCE editor
+
+All Optimizely properties have very similar width. This width is suitable for fields such as ContentReference or short text, but often the TinyMCE property used to store the main content of an article contains much more text and we would like the field to be wider.
+
+![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_full_width_default.jpg "TinyMceEnhancements")
+
+Using TinyMceEnhancements we can make the TinyMCE field larger. The assumption is that the HTML editor will be the only property on the tab.
+To increase the width of the editor, the `FullSizeTinyMce` attribute must be added to the property model. The attribute has two configuration options:
+
+### Centered
+
+The TinyMCE editor will be centred
+
+```csharp
+[Display(Name = "HTML Editor 2", GroupName = "Test2", Order = 20)]
+[FullSizeTinyMce(EditorWidth = WidthType.Centered)]
+public virtual XhtmlString HtmlEditorCentered { get; set; }
+```
+
+![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_full_width_centered.jpg "TinyMceEnhancements")
+
+### FullWidth
+
+The TinyMCE editor will be stretched to the full width of the editing area
+
+```csharp
+[Display(Name = "HTML Editor 3", GroupName = "Test3", Order = 20)]
+[FullSizeTinyMce(EditorWidth = WidthType.Full)]
+public virtual XhtmlString HtmlEditorFullWidth { get; set; }
+```
+![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_full_width.jpg "TinyMceEnhancements")
 
 ## Configuring specific features
 
