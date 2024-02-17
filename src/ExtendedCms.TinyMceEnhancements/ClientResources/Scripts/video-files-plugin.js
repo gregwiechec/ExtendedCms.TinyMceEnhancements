@@ -35,9 +35,9 @@ window.tinymce.PluginManager.add("advanced-image-plugin", function (editor, url)
                     }
 
                     if (model && model.name) {
-                        var extension = getExtension(model.name);
+                        var extension = getExtension(model.publicUrl);
                         if (supportedExtensions.indexOf(extension) !== -1) {
-                            var template = `<video controls width="250"><source src="{0}" type="video/{1}" />
+                            var template = `<video controls width="400"><source src="{0}" type="video/{1}" />
 Download the
 <a href="{0}">{1}</a>
 </video>`;
