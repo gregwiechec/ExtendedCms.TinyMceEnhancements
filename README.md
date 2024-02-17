@@ -234,6 +234,16 @@ Optimizely integration supports adding links, images and content from Assets Pan
 
 Plugin will use video tag when files has mp4, webm or ogg extension.
 
+When addon is enabled, then whenever adding video file from Assets Pane, the video tag is created. For example:
+
+```html
+<video controls="controls" width="400" data-mce-selected="1">
+    <source src="/EPiServer/CMS/Content/globalassets/en/alloy-track/alloy-track-video/alloytouch.mp4,,55?epieditmode=false" type="video/mp4" data-mce-src="/EPiServer/CMS/Content/globalassets/en/alloy-track/alloy-track-video/alloytouch.mp4,,55?epieditmode=false">
+    Download the
+    <a href="/EPiServer/CMS/Content/globalassets/en/alloy-track/alloy-track-video/alloytouch.mp4,,55?epieditmode=false" data-mce-href="/EPiServer/CMS/Content/globalassets/en/alloy-track/alloy-track-video/alloytouch.mp4,,55?epieditmode=false">mp4</a>
+</video>
+```
+
 Feature has to be turned on in options:
 
 ```csharp
