@@ -1,6 +1,7 @@
 ﻿using EPiServer.Shell.Modules;
 using ExtendedCms.TinyMceEnhancements.AdvancedImageAlt;
 using ExtendedCms.TinyMceEnhancements.AdvancedImageAttributes;
+using ExtendedCms.TinyMceEnhancements.VideoFiles;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ExtendedCms.TinyMceEnhancements;
@@ -29,6 +30,8 @@ public static class ServiceCollectionExtensions
         {
             services.AddAdvancedImageAltPlugin();
         }
+
+        services.AddVideoFilesPlugin();
 
         return services;
     }

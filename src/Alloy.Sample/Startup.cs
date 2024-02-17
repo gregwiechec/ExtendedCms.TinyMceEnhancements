@@ -115,12 +115,13 @@ namespace EPiServer.Templates.Alloy.Mvc
                     ImageAltAttributes = new[] { "copyright" }
                 };
                 options.FullWidthEnabled = true;
+                options.VideoFilesEnabled = true;
             });
 
             //services.AddImageSharp();
             services.AddBaaijteOptimizelyImageSharp();
 
-            
+
             services.AddMvc();
             services.AddAlloy();
             services.AddCmsHost()
@@ -133,7 +134,7 @@ namespace EPiServer.Templates.Alloy.Mvc
                 .AddTinyMceEnhancements()
                 .AddAdminUserRegistration(options => options.Behavior = RegisterAdminUserBehaviors.Enabled |
                                                                         RegisterAdminUserBehaviors.LocalRequestsOnly);
-            
+
             services.AddCmsTagHelpers();
             services.AddEmbeddedLocalization<Startup>();
         }
@@ -148,7 +149,7 @@ namespace EPiServer.Templates.Alloy.Mvc
             }
 
             //app.UseImageSharp();
-            
+
             app.UseBaaijteOptimizelyImageSharp();
 
             app.UseStaticFiles();
