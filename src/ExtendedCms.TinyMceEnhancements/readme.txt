@@ -43,6 +43,7 @@ public class Startup
                 ImageAltAttributes = new[] { "copyright" }
             };
             options.FullWidthEnabled = true;
+            options.VideoFilesEnabled = true;
         });
 
         ...
