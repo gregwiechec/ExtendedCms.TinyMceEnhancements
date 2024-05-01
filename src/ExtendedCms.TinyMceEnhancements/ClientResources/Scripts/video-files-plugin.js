@@ -1,4 +1,4 @@
-window.tinymce.PluginManager.add("advanced-image-plugin", function (editor, url) {
+window.tinymce.PluginManager.add("video-files-plugin", function (editor, url) {
 
     function getExtension(filename) {
         return filename.split('.').pop().toLowerCase();
