@@ -11,6 +11,7 @@ Table of contents:
 * [Adding custom attributes](#adding-custom-attributes)
 * [Set ALT text](#set-alt-text)
 * [Full Width TinyMCE editor](#full-width-tinymce-editor)
+* [Video files](#video-files)
 * [Configuring specific features](#configuring-specific-features)
 
 ## Getting Started
@@ -222,6 +223,33 @@ Feature has to be turned on in options:
 services.Configure<TinyMceEnhancementsOptions>(options =>
 {
     options.FullWidthEnabled = true;
+});
+```
+
+## Video files
+
+Optimizely integration supports adding links, images and content from Assets Pane. With TinyMceEnhancements you can also add video files.
+
+![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_video.jpg "TinyMceEnhancements")
+
+Plugin will use video tag when files has mp4, webm or ogg extension.
+
+When addon is enabled, then whenever adding video file from Assets Pane, the video tag is created. For example:
+
+```html
+<video controls="controls" width="400" data-mce-selected="1">
+    <source src="/EPiServer/CMS/Content/globalassets/en/alloy-track/alloy-track-video/alloytouch.mp4,,55?epieditmode=false" type="video/mp4" data-mce-src="/EPiServer/CMS/Content/globalassets/en/alloy-track/alloy-track-video/alloytouch.mp4,,55?epieditmode=false">
+    Download the
+    <a href="/EPiServer/CMS/Content/globalassets/en/alloy-track/alloy-track-video/alloytouch.mp4,,55?epieditmode=false" data-mce-href="/EPiServer/CMS/Content/globalassets/en/alloy-track/alloy-track-video/alloytouch.mp4,,55?epieditmode=false">mp4</a>
+</video>
+```
+
+Feature has to be turned on in options:
+
+```csharp
+services.Configure<TinyMceEnhancementsOptions>(options =>
+{
+    options.VideoFilesEnabled = true;
 });
 ```
 
