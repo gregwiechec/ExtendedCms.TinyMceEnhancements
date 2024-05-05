@@ -23,8 +23,9 @@ window.tinymce.PluginManager.add("advanced-image-plugin", function (editor, url)
             const setWidth = !!widthAttributeName;
             const setHeight = !!heightAttributeName;
             const staticAttributes = settings.imageAttributes.staticAttributes || [];
+            const detectFormatOptimization = settings.detectFormatOptimization;
 
-            if (!setWidth && !setHeight && staticAttributes.length === 0) {
+            if (!setWidth && !setHeight && staticAttributes.length === 0 && !detectFormatOptimization) {
                 return;
             }
 
@@ -43,6 +44,10 @@ window.tinymce.PluginManager.add("advanced-image-plugin", function (editor, url)
             staticAttributes.forEach(function (attribute) {
                 src = replaceImgUrlQuery(src, attribute.name, attribute.value);
             });
+            
+            if (detectFormatOptimization) {
+                src = replaceImgUrlQuery(src, "detectFormatOptimization", "true");
+            }
             
             imgEl.setAttribute("src", src);
             //imgEl.setAttribute("data-original", src);

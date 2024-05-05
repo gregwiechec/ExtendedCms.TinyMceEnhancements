@@ -10,7 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EPiServer.CMS.TinyMce" Version="4.7.1" />
+    <PackageReference Include="EPiServer.CMS.TinyMce" Version="4.7.2" />
+    <PackageReference Include="EPiServer.CMS.Core" Version="12.21.1" />
+    <PackageReference Include="EPiServer.CMS.AspNetCore" Version="12.21.1" />
+    <PackageReference Include="EPiServer.CMS.AspNetCore.Templating" Version="12.21.1" />
   </ItemGroup>
 
 </Project>

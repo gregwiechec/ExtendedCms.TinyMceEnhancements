@@ -22,4 +22,9 @@ public class TinyMceEnhancementsOptions
     /// When <see langword="true" /> then video tag is enabled in TinyMCe editor. Default <see langword="false" /> and default drop behaviour will be used
     /// </summary>
     public bool VideoFilesEnabled { get; set; } = false;
+
+    /// <summary>
+    /// When <see langword="true" /> then server will detect if webp format can be used
+    /// </summary>
+    public bool DetectFormatOptimization { get; set; } = false;
 }

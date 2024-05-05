@@ -90,14 +90,14 @@ namespace EPiServer.Templates.Alloy.Mvc
             {
                 options.ImageAttributes = new ()
                 {
-                    StaticAttributes = new[]
+                    /*StaticAttributes = new[]
                     {
                         new ImageQueryStringAttribute
                         {
                             Name = "format",
                             Value = "webp"
                         }
-                    },
+                    },*/
                     ImageSizeSettings = new ()
                     {
                         WidthName = "width",
@@ -116,6 +116,7 @@ namespace EPiServer.Templates.Alloy.Mvc
                 };
                 options.FullWidthEnabled = true;
                 options.VideoFilesEnabled = true;
+                options.DetectFormatOptimization = true;
             });
 
             //services.AddImageSharp();
