@@ -17,11 +17,6 @@ public class UrlProcessingInitialization : IInitializableModule
             return;
         }
 
-        if (e.Context.Url.ToString().EndsWith("png"))
-        {
-            e.IsCacheable = false;
-        }
-
         if (e.Context.QueryCollection.AllKeys.Contains("detectFormatOptimization"))
         {
             e.Context.QueryCollection.Remove("detectFormatOptimization");
@@ -44,38 +39,9 @@ public class UrlProcessingInitialization : IInitializableModule
         {
             ServiceLocator.Current.GetInstance<IContentUrlGeneratorEvents>().GeneratedUrl +=
                 UrlProcessingInitialization_GeneratedUrl;            
-            //ServiceLocator.Current.GetInstance<IContentUrlGeneratorEvents>().GeneratingUrl += OnGeneratingUrl;
                 
         }
     }
-
-    /*private void OnGeneratingUrl(object? sender, UrlGeneratorEventArgs e)
-    {
-        if (e.Context.ContextMode != ContextMode.Default)
-        {
-            return;
-        }
-
-        if (e.Context.Url.ToString().EndsWith("png"))
-        {
-            e.IsCacheable = false;
-        }
-
-        if (e.Context.QueryCollection.AllKeys.Contains("detectFormatOptimization"))
-        {
-            e.Context.QueryCollection.Remove("detectFormatOptimization");
-
-            var httpContext = ServiceLocator.Current.GetInstance<IHttpContextAccessor>().HttpContext;
-            if (httpContext != null)
-            {
-                if (httpContext.Request.Headers.Accept.ToString().Contains("image/webp"))
-                {
-                    e.Context.QueryCollection.Add("format", "webp");
-                    e.IsCacheable = false;
-                }
-            }
-        }
-    }*/
 
     public void Uninitialize(InitializationEngine context)
     {
