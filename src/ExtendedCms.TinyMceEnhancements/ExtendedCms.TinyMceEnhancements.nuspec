@@ -17,9 +17,9 @@
       <group targetFramework="net8.0">
         <dependency id="EPiServer.CMS.TinyMce" version="[4.7.1, 5.0.0)" />
         <dependency id="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" version="[$RuntimeVersion$, $RuntimeNextMajorVersion$)" />
-        <dependency id="EPiServer.CMS.Core" version="[12.21.1, $RuntimeNextMajorVersion$)" />
-        <dependency id="EPiServer.CMS.AspNetCore" version="[12.21.1, $RuntimeNextMajorVersion$)" />
-        <dependency id="EPiServer.CMS.AspNetCore.Templating" version="[12.21.1, $RuntimeNextMajorVersion$)" />
+        <dependency id="EPiServer.CMS.Core" version="[12.21.1, $CmsUINextMajorVersion$)" />
+        <dependency id="EPiServer.CMS.AspNetCore" version="[12.21.1, $CmsUINextMajorVersion$)" />
+        <dependency id="EPiServer.CMS.AspNetCore.Templating" version="[12.21.1, $CmsUINextMajorVersion$)" />
       </group>
     </dependencies>
     <contentFiles>
