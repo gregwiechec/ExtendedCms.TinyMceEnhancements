@@ -254,11 +254,11 @@ services.Configure<TinyMceEnhancementsOptions>(options =>
 });
 ```
 
-![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_serwer_side_webp_support.jpg "TinyMceEnhancements")
-
 ## webp servicer side support
 
 When `DetectFormatOptimization` option is on, then server will detect if webp format is supported by the browser and when yes it will set the format.
+
+![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_serwer_side_webp_support.jpg "TinyMceEnhancements")
 
 ```csharp
 services.Configure<TinyMceEnhancementsOptions>(options =>
