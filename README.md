@@ -12,7 +12,7 @@ Table of contents:
 * [Set ALT text](#set-alt-text)
 * [Full Width TinyMCE editor](#full-width-tinymce-editor)
 * [Video files](#video-files)
-* [webp servicer side support](#webp-server-side-support)
+* [webp server side support](#webp-server-side-support)
 * [Configuring specific features](#configuring-specific-features)
 
 ## Getting Started
@@ -254,7 +254,7 @@ services.Configure<TinyMceEnhancementsOptions>(options =>
 });
 ```
 
-## webp servicer side support
+## webp sever side support
 
 When `DetectFormatOptimization` option is on, then server will detect if webp format is supported by the browser and when yes it will set the format.
 
