@@ -12,7 +12,7 @@ Table of contents:
 * [Set ALT text](#set-alt-text)
 * [Full Width TinyMCE editor](#full-width-tinymce-editor)
 * [Video files](#video-files)
-* [webp server side support](#webp-server-side-support)
+* [webp server side support](#webp-sever-side-support)
 * [Configuring specific features](#configuring-specific-features)
 
 ## Getting Started
