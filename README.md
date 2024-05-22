@@ -12,6 +12,7 @@ Table of contents:
 * [Set ALT text](#set-alt-text)
 * [Full Width TinyMCE editor](#full-width-tinymce-editor)
 * [Video files](#video-files)
+* [webp servicer side support](#webp-server-side-support)
 * [Configuring specific features](#configuring-specific-features)
 
 ## Getting Started
@@ -250,6 +251,19 @@ Feature has to be turned on in options:
 services.Configure<TinyMceEnhancementsOptions>(options =>
 {
     options.VideoFilesEnabled = true;
+});
+```
+
+![TinyMceEnhancements](documentation/assets/TinyMceEnhancements_serwer_side_webp_support.jpg "TinyMceEnhancements")
+
+## webp servicer side support
+
+When `DetectFormatOptimization` option is on, then server will detect if webp format is supported by the browser and when yes it will set the format.
+
+```csharp
+services.Configure<TinyMceEnhancementsOptions>(options =>
+{
+    options.DetectFormatOptimization = true;
 });
 ```
 
