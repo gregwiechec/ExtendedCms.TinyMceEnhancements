@@ -26,6 +26,7 @@ using Alloy.Sample;
 using ExtendedCms.TinyMceEnhancements;
 using ExtendedCms.TinyMceEnhancements.AdvancedImageAttributes;
 using System.Drawing.Imaging;
+using ExtendedCms.TinyMceEnhancements.MacroVariables;
 
 
 namespace EPiServer.Templates.Alloy.Mvc
@@ -133,6 +134,7 @@ namespace EPiServer.Templates.Alloy.Mvc
                 .AddTinyMce()
                 .CustomizeTinyMce()
                 .AddTinyMceEnhancements()
+                .AddTinyMceMacroVariables()
                 .AddAdminUserRegistration(options => options.Behavior = RegisterAdminUserBehaviors.Enabled |
                                                                         RegisterAdminUserBehaviors.LocalRequestsOnly);
 
