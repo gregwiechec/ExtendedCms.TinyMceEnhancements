@@ -26,7 +26,7 @@ public static class ServiceCollectionExtensions
 
         if (registerUserMacro)
         {
-            services.TryAddTransient<ITinyMceMacroVariable, UserMacroVariable>();
+            services.AddTransient<ITinyMceMacroVariable, UserMacroVariable>();
         }
         
         return services;
