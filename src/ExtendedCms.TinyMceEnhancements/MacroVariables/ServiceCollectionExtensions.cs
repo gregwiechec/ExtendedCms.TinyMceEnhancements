@@ -1,9 +1,6 @@
-﻿using EPiServer.Shell.Modules;
-using ExtendedCms.TinyMceEnhancements.AdvancedImageAlt;
-using ExtendedCms.TinyMceEnhancements.AdvancedImageAttributes;
-using ExtendedCms.TinyMceEnhancements.MacroVariables;
+﻿using EPiServer.Cms.TinyMce.Core;
+using EPiServer.Shell;
 using ExtendedCms.TinyMceEnhancements.MacroVariables.MarcoVariables;
-using ExtendedCms.TinyMceEnhancements.VideoFiles;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -11,11 +8,20 @@ namespace ExtendedCms.TinyMceEnhancements.MacroVariables;
 
 public static class ServiceCollectionExtensions
 {
+    private const string PluginName = "macro-variables-plugin";
+    
     public static IServiceCollection AddTinyMceMacroVariables(this IServiceCollection services, bool registerUserMacro = true)
     {
         services.Configure<MacroVariablesOptions>(o =>
         {
             o.Enabled = true;
+        });
+        
+        services.Configure<TinyMceConfiguration>(config =>
+        {
+            var defaultSettings = config.Default();
+            defaultSettings.ConfigureMacroVariablesPlugin();
+            defaultSettings.AppendToolbar("macro-variables-button");
         });
 
         if (registerUserMacro)
@@ -24,6 +30,16 @@ public static class ServiceCollectionExtensions
         }
         
         return services;
+    }
+    
+    public static TinyMceSettings ConfigureMacroVariablesPlugin(this TinyMceSettings tinyMceSettings)
+    {
+        const string path = "ClientResources/Scripts/macro-variables-plugin.js";
+
+        var pluginUrl = Paths.ToClientResource(typeof(ServiceCollectionExtensions).Assembly, path);
+        tinyMceSettings
+            .AddExternalPlugin(PluginName, pluginUrl, (settings, content, propertyName) => { });
+        return tinyMceSettings;
     }
 }
 

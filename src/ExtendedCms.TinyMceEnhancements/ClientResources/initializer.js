@@ -3,12 +3,16 @@ define([
 
     "epi/_Module",
 
+    "epi-cms/ApplicationSettings",
+
     "extended-cms-tinymce-enhancements/settings",
     "extended-cms-tinymce-enhancements/full-width/initializer"
 ], function (
     declare,
 
     _Module,
+
+    ApplicationSettings,
 
     settings,
     fullWidthInitializer
@@ -22,6 +26,8 @@ define([
             if (this._settings.tinyMceEnhancementsOptions.fullWidthEnabled) {
                 fullWidthInitializer();
             }
+
+            settings.macroValues = this._settings.macroValues || [];
         }
     });
 });
