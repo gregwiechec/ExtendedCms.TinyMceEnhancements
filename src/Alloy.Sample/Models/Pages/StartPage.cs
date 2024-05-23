@@ -66,5 +66,8 @@ namespace AlloyTemplates.Models.Pages
         [Display(GroupName = Global.GroupNames.SiteSettings)]
         public virtual SiteLogotypeBlock SiteLogotype { get; set; }
 
+        [Display(GroupName = Global.GroupNames.Default, Order = 1)]
+        public virtual string ContactPhone { get; set; }
+
     }
 }
