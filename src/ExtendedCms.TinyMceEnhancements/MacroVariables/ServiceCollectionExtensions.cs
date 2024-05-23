@@ -26,3 +26,5 @@ public static class ServiceCollectionExtensions
         return services;
     }
 }
+
+//TODO: add plugin that displays macro variables list

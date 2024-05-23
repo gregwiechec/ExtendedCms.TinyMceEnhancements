@@ -29,6 +29,7 @@ public class MacroFragment(
         }
         var result = fragment.GetViewFormat();
 
+        macroVariables = macroVariables.OrderBy(x => x.Rank).ToList();
         foreach (var macroVariable in macroVariables)
         {
             var macro = options.MacroPrefix + macroVariable.Key + options.MacroPostfix;
