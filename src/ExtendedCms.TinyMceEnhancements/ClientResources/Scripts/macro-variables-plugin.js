@@ -6,7 +6,7 @@
         }
 
         editor.ui.registry.addMenuButton("macro-variables-button", {
-            text: 'My button',
+            text: "Macro variables",
             fetch: (callback) => {
                 const items = settings.macroValues.map((x) => ({
                     type: "menuitem",
