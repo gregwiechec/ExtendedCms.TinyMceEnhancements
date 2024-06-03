@@ -270,7 +270,58 @@ services.Configure<TinyMceEnhancementsOptions>(options =>
 
 ## Macro variables
 
+Macro variables is an extension that allows inserting dynamic fields (macro) into TinyMCE editor that are replaced with custom value when rendering the page.
 
+![TinyMceEnhancements](documentation/assets/marco_support.png "TinyMceEnhancements")
+
+In the image above, when the page is rendered, the %%%USER_NAME%%% field will be replaced with the name of the logged-in user name from PrincipalAccessor principalAccessor?.Principal?.Identity?.Name
+
+![TinyMceEnhancements](documentation/assets/marco_support_view.png "TinyMceEnhancements")
+
+Similar behaviour could be achieved using blocks inside TinyMCE. However, blocks are rendered as DIV elements which makes it difficult to render dynamic values as inline inside the text.
+
+Besides that, I have to mention, that plugin does not handle caching, so it has to be configured by the developer.
+
+### Registering custom macro
+
+By default, only UserName variable is registered, because sites can have different requirements for marcos.
+
+But the plugin provides a simple way to register your own macros. All you need to do is register a class that implements the `ITinyMceMacroVariable` interface and implement fields:
+
+| Name | Required | Description |
+| ---- | ---- | ---- |
+| Key  | Yes  | Unique identifier for marco variable. It will be used inside TinyMCE editor as variable. |
+| DisplayName | No | Text displayed in TinyMCE toolbar dropdown. By default Key is used. |
+| Rank | No | Used to sort macros. By default 100 is used. |
+|GetValue | Yes | Function that returns macro value used in view mode. |
+
+No Javascript code is required to register new macro.
+
+### Macro example
+
+For example , we would like to register a new macro variable, which will be replaced with a phone number for the contact. The number will be stored as a string property on StartPage.
+
+![TinyMceEnhancements](documentation/assets/marco_support_property.png "TinyMceEnhancements")
+
+Now we have to create `TinyMcePhoneMacro` class that implements `ITinyMceMacroVariable` interface and register it in container using `ServiceConfiguration` attribute.
+
+When resolving macro value, we get StartPage and read ContactPhone property.
+
+````csharp
+[ServiceConfiguration(typeof(ITinyMceMacroVariable))]
+public class TinyMcePhoneMacro(IContentLoader contentLoader): ITinyMceMacroVariable
+{
+    public string Key => "CONTACT_PHONE";
+ 
+    public string DisplayName => "Contact phone";
+ 
+    public string GetValue() => contentLoader.Get<StartPage>(ContentReference.StartPage).ContactPhone;
+}
+````
+
+That’s it. The variable is automatically registered in TinyMCE list of available macros and Editor can start using it.
+
+![TinyMceEnhancements](documentation/assets/marco_support_custom.png "TinyMceEnhancements")
 
 ## Configuring specific features
 
