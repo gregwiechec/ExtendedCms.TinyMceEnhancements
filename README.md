@@ -13,6 +13,7 @@ Table of contents:
 * [Full Width TinyMCE editor](#full-width-tinymce-editor)
 * [Video files](#video-files)
 * [webp server side support](#webp-sever-side-support)
+* [Macro variables](#macro-variables)
 * [Configuring specific features](#configuring-specific-features)
 
 ## Getting Started
@@ -266,6 +267,10 @@ services.Configure<TinyMceEnhancementsOptions>(options =>
     options.DetectFormatOptimization = true;
 });
 ```
+
+## Macro variables
+
+
 
 ## Configuring specific features
 
